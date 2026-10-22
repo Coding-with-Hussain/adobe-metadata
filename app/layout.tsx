@@ -15,9 +15,14 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  // Browser extensions (password managers, translators, dark-mode tools) often add attributes to
+  // <html>/<body> before React hydrates. suppressHydrationWarning ignores attribute differences on
+  // these two elements only; mismatches inside the app are still reported.
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
