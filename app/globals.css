@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Components use the semantic utilities (bg-surface,
+ * text-muted, border-line, ...) so light and dark mode only change here.
+ */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #f1f3f6;
+  --line: #e3e6eb;
+  --line-strong: #cdd2da;
+  --ink: #14171c;
+  --muted: #5b6472;
+  --faint: #8a93a1;
+  --accent: #4f46e5;
+  --accent-ink: #ffffff;
+  --accent-soft: #eef0ff;
+  --success: #0f7a4a;
+  --success-soft: #e7f6ee;
+  --warning: #9a5b00;
+  --warning-soft: #fff4e0;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --info: #1d5fbf;
+  --info-soft: #e8f1fd;
+  --focus: #4f46e5;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1013;
+    --surface: #16191e;
+    --surface-2: #1d2128;
+    --line: #2a2f37;
+    --line-strong: #3a414c;
+    --ink: #eceef2;
+    --muted: #a3abb8;
+    --faint: #7b8492;
+    --accent: #8b85ff;
+    --accent-ink: #0e1013;
+    --accent-soft: #24234a;
+    --success: #4cc38a;
+    --success-soft: #12291f;
+    --warning: #f0b252;
+    --warning-soft: #2e2311;
+    --danger: #ff7b72;
+    --danger-soft: #331a19;
+    --info: #79b0ff;
+    --info-soft: #15243a;
+    --focus: #8b85ff;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+dialog::backdrop {
+  background: rgb(8 10 14 / 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
