@@ -105,9 +105,16 @@ the SDK, but it is the place to change if Google retires it.
 | SVG | 5 MB | A PNG rendered in the browser via `<img>` (no scripts run), in colour or as a lossy silhouette. |
 | MP4, MOV | 100 MB, 5 min | Inline up to 14 MB, otherwise uploaded through the Files API and deleted after analysis. |
 
-Other caps: 100 files per batch and 3 concurrent requests per tab. All of these
+Other caps: 500 files per batch and 3 concurrent requests per tab. All of these
 can be changed with the environment variables in `.env.example`. The UI shows
 whatever the server reports from `/api/health`.
+
+With the default spend guards, a full 500-file batch takes at least about 8–9
+minutes, because `RATE_LIMIT_PER_MINUTE=60` paces it. Requests that hit the limit
+wait and retry rather than fail. `DAILY_REQUEST_CAP=2000` allows about four full
+batches per server per day, including regenerations. Raise either value if
+that's too tight. Only the visible rows of the queue load previews, so large
+batches stay responsive.
 
 AI, EPS and PDF files are not supported.
 

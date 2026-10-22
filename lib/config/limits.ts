@@ -104,7 +104,7 @@ export const DEFAULT_LIMITS: AppLimits = {
   // Inline requests should stay under Gemini's ~20 MB request size; base64 adds about a third.
   maxAnalysisImageBytes: 14 * MB,
   inlineVideoMaxBytes: 14 * MB,
-  maxBatchFiles: 100,
+  maxBatchFiles: 500,
   clientConcurrency: 3,
 };
 
